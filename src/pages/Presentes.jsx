@@ -1,28 +1,53 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { ref, onValue, set, remove } from 'firebase/database';
+import { db } from '../firebase';
 import GiftCard from '../components/GiftCard';
-import { gifts, categories, STORAGE_KEY, TOTAL_GIFTS } from '../data/gifts';
-
-function getSelected() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  } catch {
-    return {};
-  }
-}
-
-function saveSelected(obj) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
-}
+import { gifts, categories, TOTAL_GIFTS } from '../data/gifts';
 
 export default function Presentes() {
-  const [selected, setSelected] = useState(getSelected);
+  const [selected, setSelected] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const selectedCount = Object.keys(selected).length;
   const fillPercent = (selectedCount / TOTAL_GIFTS) * 100;
 
+  // Listen to Firebase Realtime Database for changes
+  useEffect(() => {
+    const selectedRef = ref(db, 'selectedGifts');
+
+    // Timeout fallback in case Firebase can't connect
+    const timeout = setTimeout(() => {
+      if (loading) {
+        console.warn('Firebase timeout — carregando sem dados remotos');
+        setLoading(false);
+      }
+    }, 5000);
+
+    const unsubscribe = onValue(
+      selectedRef,
+      (snapshot) => {
+        clearTimeout(timeout);
+        const data = snapshot.val() || {};
+        setSelected(data);
+        setLoading(false);
+      },
+      (error) => {
+        clearTimeout(timeout);
+        console.error('Erro ao conectar ao Firebase:', error);
+        setLoading(false);
+      }
+    );
+
+    return () => {
+      clearTimeout(timeout);
+      unsubscribe();
+    };
+  }, []);
+
   // Scroll reveal observer
   useEffect(() => {
+    if (loading) return;
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(e => {
@@ -34,9 +59,15 @@ export default function Presentes() {
       },
       { threshold: 0.12 }
     );
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+    // Small delay to ensure DOM is rendered
+    const timer = setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }, 100);
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [loading]);
 
   // Scroll to top on mount
   useEffect(() => {
@@ -44,17 +75,27 @@ export default function Presentes() {
   }, []);
 
   const handleToggle = useCallback((id) => {
-    setSelected(prev => {
-      const next = { ...prev };
-      if (next[id]) {
-        delete next[id];
-      } else {
-        next[id] = true;
-      }
-      saveSelected(next);
-      return next;
-    });
-  }, []);
+    const giftRef = ref(db, `selectedGifts/${id}`);
+    if (selected[id]) {
+      remove(giftRef).catch((err) => {
+        console.error('Erro Firebase:', err);
+        alert('Erro ao desmarcar presente: ' + err.message);
+      });
+    } else {
+      set(giftRef, true).catch((err) => {
+        console.error('Erro Firebase:', err);
+        alert('Erro ao marcar presente: ' + err.message);
+      });
+    }
+  }, [selected]);
+
+  if (loading) {
+    return (
+      <section id="presentes" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p className="loader-text">Carregando presentes…</p>
+      </section>
+    );
+  }
 
   return (
     <section id="presentes">
@@ -65,7 +106,12 @@ export default function Presentes() {
       <div className="section-header reveal">
         <p className="section-eyebrow">✦ Com carinho ✦</p>
         <h2 className="section-title">Lista de Presentes</h2>
-        <p className="section-subtitle">Clique em "Vou Presentear" para reservar um item 💝</p>
+        <p className="section-subtitle" style={{ maxWidth: 520, margin: '16px auto 0', lineHeight: 1.8 }}>
+          Oi, pessoal!<br />
+          Montei essa lista de presentes com carinho, pensando no que vai me ajudar nessa nova fase. Também deixei alguns links pra facilitar, mas fiquem totalmente à vontade pra escolher onde comprar.<br />
+          E claro, se quiserem surpreender com algo fora da lista, vai ser incrível também!
+        </p>
+        <p className="section-subtitle" style={{ marginTop: 20 }}>Clique em "Vou Presentear" para reservar um item 💝</p>
       </div>
 
       <div className="counter-bar reveal">

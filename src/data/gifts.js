@@ -29,7 +29,6 @@ export const gifts = {
   ],
 };
 
-export const STORAGE_KEY = 'cha_casa_nova_laury_2026';
 export const TOTAL_GIFTS = 22;
 
 export const categories = [
