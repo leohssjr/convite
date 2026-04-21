@@ -240,13 +240,13 @@ nav {
 }
 
 .info-value {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.15rem;
   color: var(--text-dark);
 }
 
 .hero-phrase {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.05rem;
   font-style: italic;
   color: var(--text-light);
@@ -354,7 +354,7 @@ section {
 }
 
 .section-subtitle {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Jost', sans-serif;
   font-size: 1.05rem;
   font-style: italic;
   color: var(--text-light);
@@ -1048,5 +1048,328 @@ footer {
 
   .category-title {
     font-size: 1.15rem;
+  }
+}
+
+/* ── LOCKED BUTTON STATE ── */
+.btn-select.locked {
+  background: linear-gradient(135deg, #b0a090, #c4b8a8);
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: .85;
+}
+
+.btn-select.locked:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── ADMIN PANEL ── */
+.admin-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Login Card */
+.admin-login-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 48px 40px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, .08);
+  text-align: center;
+  border: 1.5px solid rgba(216, 178, 110, .15);
+}
+
+.admin-login-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.admin-login-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.admin-login-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-light);
+  margin-bottom: 32px;
+}
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.admin-field {
+  text-align: left;
+}
+
+.admin-field label {
+  display: block;
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 6px;
+  font-family: 'Jost', sans-serif;
+}
+
+.admin-field input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid rgba(0, 0, 0, .1);
+  border-radius: 12px;
+  font-family: 'Jost', sans-serif;
+  font-size: .9rem;
+  color: var(--text-dark);
+  background: var(--cream);
+  transition: all .3s;
+  outline: none;
+}
+
+.admin-field input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(216, 178, 110, .15);
+}
+
+.admin-field input::placeholder {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.admin-error {
+  color: #c0392b;
+  font-size: .82rem;
+  font-weight: 500;
+}
+
+.admin-login-btn {
+  margin-top: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Admin Dashboard */
+.admin-container {
+  max-width: 900px;
+  width: 100%;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.admin-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.admin-stats {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--text-mid);
+  font-style: italic;
+}
+
+.admin-stat-number {
+  color: var(--rose);
+  font-weight: 600;
+}
+
+.admin-logout {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Table */
+.admin-table-wrapper {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .06);
+  border: 1.5px solid rgba(216, 178, 110, .15);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Jost', sans-serif;
+}
+
+.admin-table thead {
+  background: linear-gradient(135deg, var(--beige), var(--blush));
+}
+
+.admin-table th {
+  padding: 14px 16px;
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-align: left;
+  font-weight: 500;
+}
+
+.admin-table td {
+  padding: 14px 16px;
+  border-top: 1px solid rgba(0, 0, 0, .05);
+  font-size: .88rem;
+  color: var(--text-dark);
+  vertical-align: middle;
+}
+
+.admin-table tr:hover {
+  background: rgba(245, 235, 221, .3);
+}
+
+.admin-table tr.row-selected {
+  background: rgba(216, 178, 110, .08);
+}
+
+.admin-td-number {
+  font-size: .75rem;
+  letter-spacing: .1em;
+  color: var(--text-light);
+  width: 50px;
+}
+
+.admin-td-name a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: color .3s;
+}
+
+.admin-td-name a:hover {
+  color: var(--rose);
+}
+
+.admin-td-category {
+  font-size: .8rem;
+  color: var(--text-mid);
+}
+
+.admin-td-action {
+  width: 140px;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.status-selected {
+  background: linear-gradient(135deg, rgba(216, 178, 110, .15), rgba(232, 201, 138, .2));
+  color: #b8942f;
+  border: 1px solid rgba(216, 178, 110, .3);
+}
+
+.status-available {
+  background: rgba(46, 204, 113, .1);
+  color: #27ae60;
+  border: 1px solid rgba(46, 204, 113, .25);
+}
+
+/* Unlock Button */
+.admin-unlock-btn {
+  background: transparent;
+  color: #c0392b;
+  border: 1.5px solid rgba(192, 57, 43, .3);
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.admin-unlock-btn:hover {
+  background: rgba(192, 57, 43, .08);
+  border-color: #c0392b;
+  transform: translateY(-1px);
+}
+
+/* ── ADMIN RESPONSIVE ── */
+@media (max-width: 768px) {
+  .admin-login-card {
+    padding: 36px 28px;
+  }
+
+  .admin-logout {
+    position: static;
+    margin-top: 12px;
+  }
+
+  .admin-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 12px 12px;
+    white-space: nowrap;
+  }
+
+  .admin-td-category {
+    display: none;
+  }
+
+  .admin-table th:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-wrapper {
+    padding: 20px 12px;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  .admin-login-card {
+    padding: 32px 20px;
+  }
+
+  .admin-login-title {
+    font-size: 1.3rem;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 10px 10px;
+    font-size: .82rem;
+  }
+
+  .admin-td-name a {
+    font-size: .95rem;
+  }
+
+  .admin-unlock-btn {
+    padding: 6px 10px;
+    font-size: .65rem;
   }
 }

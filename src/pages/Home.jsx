@@ -5,20 +5,20 @@ export default function Home() {
     <>
       {/* HERO */}
       <section id="home">
-        <p className="hero-eyebrow">✦ Você está convidada ✦</p>
+        <p className="hero-eyebrow">✦ Você está convidado(a) ✦</p>
         <h1 className="hero-title">Chá de <em>Casa Nova</em></h1>
         <p className="hero-name">da Laury</p>
 
         <div className="hero-divider">
           <div className="hero-divider-line rev"></div>
-          <span>🌿</span>
+          <span> ❤ </span>
           <div className="hero-divider-line"></div>
         </div>
 
         <div className="hero-info">
           <div className="info-item">
             <p className="info-label">📅 Data</p>
-            <p className="info-value">13 de Junho de 2026</p>
+            <p className="info-value">13 de Junho de 2026 às 15:00</p>
           </div>
           <div className="info-item">
             <p className="info-label">📍 Local</p>
@@ -26,7 +26,7 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="hero-phrase">"Venha celebrar esse novo começo comigo 💕"</p>
+        <p className="hero-phrase">Venha celebrar esse novo começo comigo.</p>
 
         <div className="hero-buttons">
           <a href="https://forms.gle/qQZBpixQbcGekLoM7" target="_blank" rel="noopener noreferrer" className="btn btn-primary">✅ Confirmar Presença</a>

@@ -20,23 +20,27 @@ export default function GiftCard({ item, isSelected, onToggle }) {
   }, []);
 
   const handleToggle = useCallback((e) => {
+    // If already selected, do nothing — only admin can unlock
+    if (isSelected) return;
     onToggle(item.id);
-    if (!isSelected) {
-      spawnHearts(e.currentTarget.closest('.gift-card'));
-    }
+    spawnHearts(e.currentTarget.closest('.gift-card'));
   }, [item.id, isSelected, onToggle, spawnHearts]);
 
   return (
     <div className={`gift-card${isSelected ? ' selected' : ''}`} id={`card-${item.id}`}>
       <p className="gift-number">Nº {String(item.id).padStart(2, '0')}</p>
       <p className="gift-name">{item.name}</p>
-      <p className="selected-badge">✔ Já escolhido</p>
+      <p className="selected-badge">✔ Já selecionado</p>
       <div className="gift-actions">
         <a href={item.url} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-link">
           Ver Produto
         </a>
-        <button className="btn btn-sm btn-select" onClick={handleToggle}>
-          {isSelected ? '✔ Selecionado' : 'Vou Presentear'}
+        <button
+          className={`btn btn-sm btn-select${isSelected ? ' locked' : ''}`}
+          onClick={handleToggle}
+          disabled={isSelected}
+        >
+          {isSelected ? '🔒 Já Escolhido' : 'Vou Presentear'}
         </button>
       </div>
     </div>

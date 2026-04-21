@@ -4,6 +4,7 @@ import FloralBackground from './components/FloralBackground';
 import FabButtons from './components/FabButtons';
 import Home from './pages/Home';
 import Presentes from './pages/Presentes';
+import Admin from './pages/Admin';
 
 export default function App() {
   return (
@@ -14,9 +15,11 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/presentes" element={<Presentes />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
 
       <FabButtons />
     </>
   );
 }
+

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ref, onValue, set, remove } from 'firebase/database';
+import { ref, onValue, set } from 'firebase/database';
 import { db } from '../firebase';
 import GiftCard from '../components/GiftCard';
 import { gifts, categories, TOTAL_GIFTS } from '../data/gifts';
@@ -75,18 +75,14 @@ export default function Presentes() {
   }, []);
 
   const handleToggle = useCallback((id) => {
+    // If already selected, do nothing — only admin can unlock
+    if (selected[id]) return;
+
     const giftRef = ref(db, `selectedGifts/${id}`);
-    if (selected[id]) {
-      remove(giftRef).catch((err) => {
-        console.error('Erro Firebase:', err);
-        alert('Erro ao desmarcar presente: ' + err.message);
-      });
-    } else {
-      set(giftRef, true).catch((err) => {
-        console.error('Erro Firebase:', err);
-        alert('Erro ao marcar presente: ' + err.message);
-      });
-    }
+    set(giftRef, true).catch((err) => {
+      console.error('Erro Firebase:', err);
+      alert('Erro ao marcar presente: ' + err.message);
+    });
   }, [selected]);
 
   if (loading) {
