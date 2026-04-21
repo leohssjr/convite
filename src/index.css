@@ -1330,8 +1330,7 @@ footer {
 
   .admin-table th,
   .admin-table td {
-    padding: 12px 12px;
-    white-space: nowrap;
+    padding: 12px 10px;
   }
 
   .admin-td-category {
@@ -1341,12 +1340,16 @@ footer {
   .admin-table th:nth-child(3) {
     display: none;
   }
+
+  .admin-td-name a {
+    white-space: normal;
+    word-break: break-word;
+  }
 }
 
 @media (max-width: 480px) {
   .admin-wrapper {
-    padding: 20px 12px;
-    align-items: flex-start;
+    padding: 24px 10px;
     padding-top: 40px;
   }
 
@@ -1360,16 +1363,37 @@ footer {
 
   .admin-table th,
   .admin-table td {
-    padding: 10px 10px;
-    font-size: .82rem;
+    padding: 8px 6px;
+    font-size: .78rem;
+  }
+
+  .admin-td-number {
+    width: 32px;
+    font-size: .68rem;
   }
 
   .admin-td-name a {
-    font-size: .95rem;
+    font-size: .88rem;
+  }
+
+  .admin-td-action {
+    width: auto;
   }
 
   .admin-unlock-btn {
-    padding: 6px 10px;
-    font-size: .65rem;
+    padding: 6px 8px;
+    font-size: .62rem;
+    white-space: nowrap;
+  }
+
+  /* Hide status column on very small screens */
+  .admin-td-status,
+  .admin-table th:nth-child(4) {
+    display: none;
+  }
+
+  .status-badge {
+    padding: 4px 10px;
+    font-size: .62rem;
   }
 }
