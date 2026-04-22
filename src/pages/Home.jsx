@@ -18,7 +18,7 @@ export default function Home() {
         <div className="hero-info">
           <div className="info-item">
             <p className="info-label">📅 Data</p>
-            <p className="info-value">13 de Junho de 2026 às 15:00</p>
+            <p className="info-value">20 de Junho de 2026 às 15:00</p>
           </div>
           <div className="info-item">
             <p className="info-label">📍 Local</p>
