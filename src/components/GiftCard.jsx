@@ -28,7 +28,6 @@ export default function GiftCard({ item, isSelected, onToggle }) {
 
   return (
     <div className={`gift-card${isSelected ? ' selected' : ''}`} id={`card-${item.id}`}>
-      <p className="gift-number">Nº {String(item.id).padStart(2, '0')}</p>
       <p className="gift-name">{item.name}</p>
       <p className="selected-badge">✔ Já selecionado</p>
       <div className="gift-actions">
