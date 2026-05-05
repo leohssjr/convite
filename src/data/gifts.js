@@ -36,7 +36,7 @@ export const gifts = {
     { id: 29, name: "Cortina Trilho Suíço (4m x 2,50m Branco e Branco) ", url: "https://br.shp.ee/3wvfTutb" },
     { id: 30, name: "Jogo de Cama Queen", url: "https://www.amazon.com.br/Len%C3%A7ol-Bordado-Imperial-Realeza-Algod%C3%A3o/dp/B09WKQHW9V" },
     { id: 31, name: "Jogo de Cama Queen", url: "https://www.amazon.com.br/Len%C3%A7ol-Bordado-Imperial-Realeza-Algod%C3%A3o/dp/B09WKQLHY5?th=1" },
-    { id: 32, name: "Protetor de Colchão Queen", url: "https://www.mercadolivre.com.br/p/MLB22651796?pdp_filters=item_id:MLB5002690298&matt_tool=38524122#origin=share&sid=share&wid=MLB5002690298&action=whatsapp" },
+    { id: 32, name: "Protetor de Colchão Queen", url: "https://www.mercadolivre.com.br/protetor-de-colchao-queen-impermeavel-jacquard-premium-macio/up/MLBU3719047040#reviews" },
     { id: 33, name: "Climatizador", url: "https://www.amazon.com.br/Climatizador-Brit%C3%A2nia-Autonomia-BCL05A-127V/dp/B0DGGVB13Q/ref=asc_df_B0DGGVB13Q?mcid=76dcfb85d2ef3edabe120708c81aa308&tag=googleshopp00-20&linkCode=df0&hvadid=709968341215&hvpos=&hvnetw=g&hvrand=12133177330784536192&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9262805&hvtargid=pla-2387070967135&psc=1&hvocijid=12133177330784536192-B0DGGVB13Q-&hvexpln=0&language=pt_BR" },
     { id: 34, name: "Cafeteira", url: "https://www.mercadolivre.com.br/1300w-cafeteira-eletrica-espresso-cbocal-espumar-leite-18l/up/MLBU3931074586?attributes=COLOR%3APreto%2CVOLTAGE%3A220V_177c66_vpp&pdp_filters=item_id%3AMLB6674392616&applied_product_filters=MLBU3931074588&from=gshop&picker=true&skipInApp=true&matt_ignore=true" },
   ],
